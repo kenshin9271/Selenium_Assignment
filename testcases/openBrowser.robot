@@ -34,7 +34,7 @@ Input Query and Click Search
     Sleep    3
 
 Get Item Price
-    Wait Until Element Is Visible    ${ItemPrice}    30
+    Wait For Condition    return document.readyState=="complete"    30
     ${ItemPrice}=    Get Text    ${ItemPrice}
     log to console    price is ${ItemPrice}
     ${ItemPrice}=    Get Regexp Matches    ${ItemPrice}    \\d*\\.\\d*
