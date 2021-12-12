@@ -26,7 +26,7 @@ Input Query and Click Search
     Input Text    ${SearchBox}    ${InputQuery}
     Click Button    ${SearchBtn}
     Wait For Condition    return document.readyState=="complete"    30
-    Wait Until Element Is Visible    ${FirstSearchResult}    10
+    Wait Until Element Is Visible    ${FirstSearchResult}    30
     Click Link    ${FirstSearchResult}
 
 Get Item Price
