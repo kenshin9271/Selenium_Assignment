@@ -28,6 +28,7 @@ Input Query and Click Search
     Sleep    3
     Wait Until Element Is Visible    ${SearchBtn}    30
     Click Button    ${SearchBtn}
+    Sleep    3
     Wait For Condition    return document.readyState=="complete"    30
     Wait Until Element Is Visible    ${FirstSearchResult}    30
     Click Link    ${FirstSearchResult}
