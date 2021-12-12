@@ -82,6 +82,7 @@ jobs:
       -  *npm_install
       -  *create_dir
       -  *install_pyyaml
+      -  *runTest
       -   store_test_results:
              path:  /tmp/test-reports
       -   store_artifacts:
