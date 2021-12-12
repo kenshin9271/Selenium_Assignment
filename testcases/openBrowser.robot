@@ -37,12 +37,12 @@ Input Query and Click Search
 Get Item Price
     Wait For Condition    return document.readyState=="complete"    30
     ${ItemPrice}=    Get Text    ${ItemPrice}
-    log to console    price is ${ItemPrice}
+#    log to console    price is ${ItemPrice}
     ${ItemPrice}=    Get Regexp Matches    ${ItemPrice}    \\d*\\.\\d*
-    log to console    price is ${ItemPrice}
+#    log to console    price is ${ItemPrice}
     ${ItemPrice}=    Evaluate    ${ItemPrice}[0]
     ${ItemPrice} =    Convert To Number    ${ItemPrice}
-    log to console    price is ${ItemPrice}
+#    log to console    price is ${ItemPrice}
     [Return]    ${ItemPrice}
 
 *** Test Cases ***
