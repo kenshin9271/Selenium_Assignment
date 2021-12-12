@@ -25,6 +25,7 @@ Input Query and Click Search
     [Arguments]    ${InputQuery}
     Input Text    ${SearchBox}    ${InputQuery}
     Click Button    ${SearchBtn}
+    Wait Until Element Is Visible    ${FirstSearchResult}    10
     Click Link    ${FirstSearchResult}
 
 Get Item Price
