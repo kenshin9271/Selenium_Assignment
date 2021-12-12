@@ -31,6 +31,7 @@ Input Query and Click Search
     Wait For Condition    return document.readyState=="complete"    30
     Wait Until Element Is Visible    ${FirstSearchResult}    30
     Click Link    ${FirstSearchResult}
+    Sleep    3
 
 Get Item Price
     Wait Until Element Is Visible    ${ItemPrice}    30
