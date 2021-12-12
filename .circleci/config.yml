@@ -1,0 +1,95 @@
+version: 2
+
+default: &default
+  docker:
+    - image: selenium/standalone-chrome
+  working_directory: ~/repo
+
+alias:
+  - &app_get
+    run:
+     name: install apt get
+     command: 'sudo apt-get update'
+
+  - &git_install
+    run:
+     name:  install git
+     command: 'sudo apt-get -y install git'
+
+  - &python_install
+    run:
+     name:  install python& libs
+     command: 'sudo apt-get install -y libnss3 libgconf-2-4  python3.8 python3-pip'
+
+  - &install_pyyaml
+    run:
+     name: Install pip install pyyaml
+     command: 'sudo python3 -m pip install pyyaml'
+
+  - &rf_install
+    run:
+     name:  install robot framework
+     command: 'sudo python3 -m pip install robotframework'
+
+  - &selLib_install
+    run:
+     name:  install robot framework selenium library
+     command: 'sudo python3 -m pip install --upgrade robotframework-seleniumlibrary'
+
+  - &reqLib_install
+    run:
+     name:  install robot framework requests library
+     command: 'sudo python3 -m pip install robotframework-requests'
+
+  - &npm_install
+    run:
+     name:  install npm
+     command: |
+       curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
+       sudo apt install nodejs
+       sudo npm install -g npm
+
+  - &create_dir
+    run:
+     name:  Create directory for reports
+     command: sudo mkdir /tmp/test-reports
+
+
+      
+  - &runTest
+    run:
+     name:  Run Test
+     command: |
+        
+        COMMIT_MESSAGE=$(git log --format=oneline -n 1 $CIRCLE_SHA1)
+        export QANo="$(echo -n $COMMIT_MESSAGE | tail -c 2)"
+        set -- $COMMIT_MESSAGE
+        export $CIRCLE_JOB
+        export $2
+        robot .\testcases\openBrowser.robot
+
+jobs:
+  amazon:
+    <<: *default
+    parallelism: 1
+    steps:
+      -  checkout
+      -  *app_get
+      -  *git_install
+      -  *python_install
+      -  *rf_install
+      -  *selLib_install
+      -  *npm_install
+      -  *create_dir
+      -  *install_pyyaml
+      -   store_test_results:
+             path:  /tmp/test-reports
+      -   store_artifacts:
+             path:  /tmp/test-reports
+             destination: test-reports
+
+workflows:
+  version: 2
+  workflow:
+    jobs:
+    - amazon
