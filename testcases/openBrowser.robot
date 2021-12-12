@@ -24,6 +24,7 @@ Check Page Title
 Input Query and Click Search
     [Arguments]    ${InputQuery}
     Input Text    ${SearchBox}    ${InputQuery}
+    Sleep    3
     Click Button    ${SearchBtn}
     Wait For Condition    return document.readyState=="complete"    30
     Wait Until Element Is Visible    ${FirstSearchResult}    30
