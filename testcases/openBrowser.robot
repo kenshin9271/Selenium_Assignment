@@ -10,7 +10,7 @@ ${SearchBox}    //input[contains(@id,'twotabsearchtextbox')]
 ${Query}    laptop
 ${SearchBtn}    //input[contains(@id,'nav-search-submit-button')]
 ${FirstSearchResult}    (//a[contains(@class,'a-link-normal s-no-outline')])[1]
-${ItemPrice}    //span[contains(@id,'price_inside_buybox') and contains(@class,'a-size-medium a-color-price')]
+${ItemPrice}    (//*[contains(@class,'a-price')]//*[contains(text(),"$")])[2]
 ${MinimumPrice}    100
 
 *** Keywords ***
@@ -23,18 +23,26 @@ Check Page Title
 
 Input Query and Click Search
     [Arguments]    ${InputQuery}
+    Wait Until Element Is Visible    ${SearchBox}    30
     Input Text    ${SearchBox}    ${InputQuery}
+    Sleep    3
+    Wait Until Element Is Visible    ${SearchBtn}    30
     Click Button    ${SearchBtn}
+    Sleep    3
+    Wait For Condition    return document.readyState=="complete"    30
+    Wait Until Element Is Visible    ${FirstSearchResult}    30
     Click Link    ${FirstSearchResult}
+    Sleep    3
 
 Get Item Price
+    Wait For Condition    return document.readyState=="complete"    30
     ${ItemPrice}=    Get Text    ${ItemPrice}
-    log to console    price is ${ItemPrice}
+#    log to console    price is ${ItemPrice}
     ${ItemPrice}=    Get Regexp Matches    ${ItemPrice}    \\d*\\.\\d*
-    log to console    price is ${ItemPrice}
+#    log to console    price is ${ItemPrice}
     ${ItemPrice}=    Evaluate    ${ItemPrice}[0]
     ${ItemPrice} =    Convert To Number    ${ItemPrice}
-    log to console    price is ${ItemPrice}
+#    log to console    price is ${ItemPrice}
     [Return]    ${ItemPrice}
 
 *** Test Cases ***

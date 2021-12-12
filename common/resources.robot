@@ -12,7 +12,7 @@ ${HOME URL}    https://www.amazon.com/
 @{chrome_arguments}    --disable-infobars    # to hide all infobar which could block some elements
 ...                    --goog:loggingPrefs=${browser logging capability}    # to log console error
 ...                    --window-size=1280,1024
-#...                    --headless     # run test in headless mode (browser will not be visibled)
+...                    --headless     # run test in headless mode (browser will not be visibled)
 #...                    --auto-open-devtools-for-tabs    # to open devtool by default
 ...                    --disable-gpu
 #...                    --disable-dev-shm-usage
