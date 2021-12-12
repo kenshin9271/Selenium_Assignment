@@ -10,7 +10,7 @@ ${SearchBox}    //input[contains(@id,'twotabsearchtextbox')]
 ${Query}    laptop
 ${SearchBtn}    //input[contains(@id,'nav-search-submit-button')]
 ${FirstSearchResult}    (//a[contains(@class,'a-link-normal s-no-outline')])[1]
-${ItemPrice}    //span[contains(@id,'price_inside_buybox')][1]
+${ItemPrice}    //*[contains(@id,'price_inside')][1]
 ${MinimumPrice}    100
 
 *** Keywords ***
