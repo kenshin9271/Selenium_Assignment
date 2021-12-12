@@ -66,7 +66,7 @@ alias:
         set -- $COMMIT_MESSAGE
         export $CIRCLE_JOB
         export $2
-        testcases/*.robot
+        sudo testcases/*.robot
 
 jobs:
   amazon:
