@@ -33,6 +33,7 @@ Input Query and Click Search
     Click Link    ${FirstSearchResult}
 
 Get Item Price
+    Wait Until Element Is Visible    ${ItemPrice}    30
     ${ItemPrice}=    Get Text    ${ItemPrice}
     log to console    price is ${ItemPrice}
     ${ItemPrice}=    Get Regexp Matches    ${ItemPrice}    \\d*\\.\\d*
