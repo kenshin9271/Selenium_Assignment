@@ -10,4 +10,10 @@ Dependencies required
     i. install robotframework
     ii. install robotframework-seleniumlibrary
 6. Run the test with command below
-    robot .\testcases\openBrowser.robot
+    cd to ${your_project_folder}\PycharmProjects\Selenium_Assignment>
+    run the test with command "robot .\testcases\openBrowser.robot"
+    
+    
+    
+
+
