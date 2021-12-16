@@ -1,8 +1,6 @@
 *** Settings ***
 Documentation     Simple example using SeleniumLibrary.
-Library           SeleniumLibrary
 Resource          ../common/resources.robot
-
 
 *** Variables ***
 
@@ -37,12 +35,9 @@ Input Query and Click Search
 Get Item Price
     Wait For Condition    return document.readyState=="complete"    30
     ${ItemPrice}=    Get Text    ${ItemPrice}
-#    log to console    price is ${ItemPrice}
     ${ItemPrice}=    Get Regexp Matches    ${ItemPrice}    \\d*\\.\\d*
-#    log to console    price is ${ItemPrice}
     ${ItemPrice}=    Evaluate    ${ItemPrice}[0]
     ${ItemPrice} =    Convert To Number    ${ItemPrice}
-#    log to console    price is ${ItemPrice}
     [Return]    ${ItemPrice}
 
 *** Test Cases ***
@@ -51,6 +46,7 @@ Amazon Laptop Test
     Launch Chrome   #launch chrome with specific options
     Go To   ${HOME URL}    # go to amazon.com
     Wait For Condition    return document.readyState=="complete"    #wait for the webpage to finish loading
+#    Debug
     Check Page Title    Amazon.com    #check page title contains the string "Amazon.com"
     Input Query and Click Search    ${Query}    #key in search query in the searchbar and click search
     ${ItemPrice}=    Get Item Price    #read the item price and store it in variable
