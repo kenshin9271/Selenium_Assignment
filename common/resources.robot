@@ -4,6 +4,8 @@ Documentation     A resource file with reusable keywords and variables.
 Library		      String
 Library           DateTime
 Library           SeleniumLibrary
+#Library           DebugLibrary
+
 
 *** Variables ***
 ${BROWSER}    Chrome
