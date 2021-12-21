@@ -50,7 +50,6 @@ Take Screenshot For Failed Test
 
 Custom Teardown
     Run Keyword If Test Failed    Take Screenshot For Failed Test
-    Log To Console    HEllo PANDA
     Close All Browsers
 
 Stop Test With Screenshot

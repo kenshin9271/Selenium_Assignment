@@ -35,7 +35,7 @@ Input Query and Click Search
 Get Item Price
     Wait For Condition    return document.readyState=="complete"    30
     ${ItemPrice}=    Get Text    ${ItemPrice}
-    ${ItemPrice}=    Get Regexp Matches    ${ItemPrice}    \\d*\\.\\d*
+    ${ItemPrice}=    Get Regexp Matches    ${ItemPrice}    \\d{3,5}\\.\\d{2}
     ${ItemPrice}=    Evaluate    ${ItemPrice}[0]
     ${ItemPrice} =    Convert To Number    ${ItemPrice}
     [Return]    ${ItemPrice}
